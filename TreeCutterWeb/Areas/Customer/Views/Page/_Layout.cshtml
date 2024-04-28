@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row mt-5">
+    <div class="col-md-3">
+        @await Component.InvokeAsync("PageNavigation")
+    </div>
+    <div class="col-md-9">
+        @RenderBody()
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

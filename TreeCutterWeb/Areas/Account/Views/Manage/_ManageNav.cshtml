@@ -1,0 +1,12 @@
+﻿@inject SignInManager<ApplicationUser> SignInManager
+
+@if(ViewData["ActivePage"] == null)
+{
+    ViewData["ActivePage"] = "Index";
+}
+
+<ul class="nav nav-pills flex-column">
+    <li class="nav-item"><a class="nav-link @(ViewData["ActivePage"].ToString() == "Index" ? "active" : "")" id="profile" asp-controller="Manage" asp-action="Index">Profile</a></li>
+    <li class="nav-item"><a class="nav-link @(ViewData["ActivePage"].ToString() == "Email" ? "active" : "")" id="email" asp-controller="Manage" asp-action="Email">Email</a></li>
+    <li class="nav-item"><a class="nav-link @(ViewData["ActivePage"].ToString() == "Password" ? "active" : "")" id="change-password" asp-controller="Manage" asp-action="Password">Password</a></li>
+</ul>

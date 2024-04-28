@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Order List";
+    Dictionary<string, string> statusStyles = TreeCutter.Utility.OrderStatus.GetOrderStatusStyles(Context.Request.Query["status"]);
+}
+
+<div class="container">
+    <div class="row pt-4 mb-3">
+        <div class="col-12">
+            <h2 class="text-primary">Order List</h2>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between pb-5 pt-2">
+        <ul class="list-group list-group-horizontal-sm">
+            <a style="text-decoration: none;" asp-controller="Order" asp-action="Index" asp-route-status="inprocess">
+            <li class="list-group-item @statusStyles["inprocess"]">In Process</li>
+            </a>
+            <a style="text-decoration: none;" asp-controller="Order" asp-action="Index" asp-route-status="pending">
+            <li class="list-group-item @statusStyles["pending"]">Payment Pending</li>
+            </a>
+            <a style="text-decoration: none;" asp-controller="Order" asp-action="Index" asp-route-status="completed">
+            <li class="list-group-item @statusStyles["completed"]">Completed</li>
+            </a>
+            <a style="text-decoration: none;" asp-controller="Order" asp-action="Index" asp-route-status="approved">
+            <li class="list-group-item @statusStyles["approved"]">Approved</li>
+            </a>
+            <a style="text-decoration: none;" asp-controller="Order" asp-action="Index" asp-route-status="all">
+            <li class="list-group-item @statusStyles["all"]">All</li>
+            </a>
+        </ul>
+    </div>
+    <table id="tblData" class="table table-bordered table-striped" style="width: 100%;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Total</th>
+                <th>Operations</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@section Scripts {
+    <script src="~/js/renderTable-clientOrder.js"></script>
+}

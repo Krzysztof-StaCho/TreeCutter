@@ -1,0 +1,27 @@
+﻿@if (TempData["message"] != null)
+{
+    @if (TempData["messageType"] != null && TempData["messageType"].ToString() == "success")
+    {
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <script type="text/javascript">
+            toastr.success('@TempData["message"]');
+        </script>
+    }
+    else if (TempData["messageType"] != null && TempData["messageType"].ToString() == "error")
+    {
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <script type="text/javascript">
+            toastr.error('@TempData["message"]');
+        </script>
+    }
+    else if (TempData["messageType"] != null && TempData["messageType"].ToString() == "info")
+    {
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <script type="text/javascript">
+            toastr.info('@TempData["message"]');
+        </script>
+    }
+}

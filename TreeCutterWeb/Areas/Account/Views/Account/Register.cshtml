@@ -1,0 +1,77 @@
+﻿@model RegisterVM
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-primary bg-gradient ml-0 py-4">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="py-2 text-white">Register</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <div class="row">
+            <div class="col-md-12">
+                <form id="registerForm" class="row" method="post">
+                    <input asp-for="ReturnUrl" hidden />
+                    <h3 class="border-bottom pb-3 mb-4 text-secondary text-center">Create a new account.</h3>
+                    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                    <div class="form-floating mb-3 col-md-12">
+                        <input asp-for="Email" class="form-control" autocomplete="email" aria-required="true" placeholder="name@example.com" />
+                        <label asp-for="Email" class="ms-2 text-muted">Email</label>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3 col-md-6">
+                        <input asp-for="Name" class="form-control" autocomplete="username" placeholder="example" />
+                        <label asp-for="Name" class="ms-2 text-muted">Username</label>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3 col-md-6">
+                        <input asp-for="PhoneNumber" class="form-control" autocomplete="phone" placeholder="123456789" />
+                        <label asp-for="PhoneNumber" class="ms-2 text-muted">Phone Number</label>
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3 col-md-6">
+                        <input asp-for="Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                        <label asp-for="Password" class="ms-2 text-muted">Password</label>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3 col-md-6">
+                        <input asp-for="ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                        <label asp-for="ConfirmPassword" class="ms-2 text-muted">Confirm Password</label>
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3 col-md-6">
+                        <input asp-for="StreetAddress" class="form-control" placeholder="Street 1B" />
+                        <label asp-for="StreetAddress" class="ms-2 text-muted">Street Address</label>
+                        <span asp-validation-for="StreetAddress" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3 col-md-6">
+                        <input asp-for="City" class="form-control" placeholder="City" />
+                        <label asp-for="City" class="ms-2 text-muted">City</label>
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3 col-md-6">
+                        <input asp-for="State" class="form-control" placeholder="State" />
+                        <label asp-for="State" class="ms-2 text-muted">State</label>
+                        <span asp-validation-for="State" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3 col-md-6">
+                        <input asp-for="PostalCode" class="form-control" placeholder="10-100" />
+                        <label asp-for="PostalCode" class="ms-2 text-muted">Postal Code</label>
+                        <span asp-validation-for="PostalCode" class="text-danger"></span>
+                    </div>
+                    <div class="col-12">
+                        <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

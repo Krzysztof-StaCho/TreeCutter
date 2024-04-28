@@ -1,0 +1,21 @@
+﻿@model TreeCutter.Models.ViewModels.PageVM
+
+<ul class="nav nav-pills flex-column">
+    @foreach (Page item in Model.Pages)
+    {
+        <li class="nav-item">
+            <a class="nav-link @(((int?)ViewData["ActivePage"]).GetValueOrDefault() == item.Id ? "active" : "")" asp-area="Customer" asp-controller="Page" asp-action="ShowPage" asp-route-id="@item.Id">
+                <i class="bi bi-arrow-right-square-fill"></i> @item.Title
+            </a>
+        </li>
+    }
+</ul>
+<h5 class="text-center my-3">Top 3 News</h5>
+<ul class="nav nav-pills flex-column">
+    @foreach (News item in Model.News)
+    {
+        <li class="nav-item">
+            <a class="nav-link @(((int?)ViewData["ActivePage"]).GetValueOrDefault() == item.Id ? "active" : "")" asp-area="Customer" asp-controller="Page" asp-action="ShowPage" asp-route-id="@item.Id">@item.Title</a>
+        </li>
+    }
+</ul>

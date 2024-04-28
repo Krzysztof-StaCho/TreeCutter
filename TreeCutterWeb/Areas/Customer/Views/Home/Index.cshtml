@@ -1,0 +1,98 @@
+﻿@model TreeCutter.Models.ViewModels.CustomerHomeVM
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_Layout.cshtml";
+}
+
+<div id="accordionBundle" class="py-2 col-12 accordion">
+    <div class="accordion-item">
+        <h2 id="headingBundle" class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBundle"
+                    aria-expanded="true" aria-controls="collapseBundle">
+                <h2>
+                    <i class="bi bi-archive"></i> Bundle
+                </h2>
+            </button>
+        </h2>
+        <div id="collapseBundle" class="accordion-collapse collapse show" aria-labelledby="headingBundle" data-bs-parent="#accordionBundle">
+            <div class="accordion-body">
+                <div class="row pb-3">
+                    @foreach (Bundle bundle in Model.BundleList)
+                    {
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="row p-2">
+                                <div class="col-12 p-1">
+                                    <div class="card border-0 p-3 shadow border-top border-5 rounded">
+                                        <div class="card-header">
+                                            <h4>Bundle</h4>
+                                        </div>
+                                        <div class="card-body pb-0">
+                                            <div class="pl-1">
+                                                <p class="card-title h5 text-dark opacity-75 text-uppercase text-center">@bundle.Name</p>
+                                                <p class="card-title text-warning text-center">by <b>@(bundle.Category?.Name ?? "None")</b></p>
+                                            </div>
+                                            <div class="pl-1">
+                                                <p class="text-dark text-opacity-75 text-center">
+                                                    Price:
+                                                    <span class="mb-0">@bundle.Price.ToString("c")</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <a asp-controller="Home" asp-action="BundleDetails" asp-route-id="@bundle.Id" class="btn btn-primary bg-gradient border-0 form-control">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="accordionProduct" class="py-2 col-12 accordion">
+    <div class="accordion-item">
+        <h2 id="headingProduct" class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProduct"
+                    aria-expanded="true" aria-controls="collapseProduct">
+                <h2>
+                    <i class="bi bi-boxes"></i> Products
+                </h2>
+            </button>
+        </h2>
+        <div id="collapseProduct" class="accordion-collapse collapse show" aria-labelledby="headingProduct" data-bs-parent="#accordionProduct">
+            <div class="accordion-body">
+                <div class="row pb-3">
+                    @foreach (Product product in Model.ProductList)
+                    {
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="row p-2">
+                                <div class="col-12 p-1">
+                                    <div class="card border-0 p-3 shadow border-top border-5 rounded">
+                                        <img src="https://placehold.co/500x600/png" class="card-img-top rounded" />
+                                        <div class="card-body pb-0">
+                                            <div class="pl-1">
+                                                <p class="card-title h5 text-dark opacity-75 text-uppercase text-center">@product.Name</p>
+                                                <p class="card-title text-warning text-center">by <b>@(product.Category?.Name ?? "None")</b></p>
+                                            </div>
+                                            <div class="pl-1">
+                                                <p class="text-dark text-opacity-75 text-center">
+                                                    Price:
+                                                    <span class="mb-0">@product.Price.ToString("c")</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <a asp-controller="Home" asp-action="ProductDetails" asp-route-id="@product.Id" class="btn btn-primary bg-gradient border-0 form-control">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
