@@ -30,7 +30,7 @@ namespace TreeCutterPanel.Areas.Admin.Controllers
 
             if (id.GetValueOrDefault() == 0) return View();
 
-            Product? productFromDb = _unitOfWork.Product.Get(u => u.Id == id, includeProperties: "ProductImages");
+            Product? productFromDb = _unitOfWork.Product.Get(u => u.Id == id);
             if (productFromDb == null) return NotFound();
             return View(productFromDb);
         }
